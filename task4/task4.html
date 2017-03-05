@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>定位和居中</title>
+	<style type="text/css">
+		#po{
+			width: 400px;
+			height: 200px;
+			background-color: #cccccc;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			margin-top: -100px;
+			margin-left: -200px;
+			overflow: hidden;
+		}
+		.circle{
+			width: 100px;
+			height: 100px;
+			border-radius: 100px;
+			background-color: yellow;
+			position: absolute;
+			
+		}
+		.po1{
+			left: -50px;
+			top: -50px;
+		}
+		.po2{
+			right: -50px;
+			bottom: -50px;
+		}
+	</style>
+</head>
+<body>
+	<div id="po">
+		<div class="circle po1"></div>
+		<div class="circle po2"></div>
+	</div>
+</body>
+</html>
