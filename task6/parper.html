@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>报纸排版</title>
+	<style type="text/css">
+		body,p,h1{
+			padding: 0px;
+			margin: 0px;
+			font-family: '微软雅黑';
+			font-size: 16px;
+		}
+		#wrap{
+			width: 980px;
+			height: 1386px;
+			margin: 0px auto;
+		}
+		.con{
+			width: 892px;
+			margin-bottom: 30px;
+		}
+		.con1{
+			border-bottom: solid 2px #938e8c;
+			position: relative;
+		}
+		.con1 .left{
+			width: 110px;
+			height: 61px;
+			background-color: #d45d5c;
+			
+		}
+		.con1 .left .po{
+			font-family: '黑体';
+			font-size: 12px;
+			color: #ffffff;
+			position: absolute;
+			left: 0px;
+			bottom: 0px;
+		}
+		.con1 .right{
+			position: absolute;
+			bottom: 0px;
+			right: 0px;
+			font-family: '黑体';
+			font-size: 12px;
+			color: #d45d5c;
+		}
+		.con2 .left{
+			width: 641px;
+			height: 301px;
+			position: relative;
+		}
+		.con2 .shadow1{
+			width: 191px;
+			height: 301px;
+			background-color: #75b86b;
+			position: absolute;
+			left: 0px;
+			top: 0px;
+			opacity: 0.5;
+		}
+		.con2 .shadow2{
+			width: 191px;
+			height: 301px;
+			background-color: #d45d5c;
+			position: absolute;
+			right: 0px;
+			top: 0px;
+			opacity: 0.5;
+		}
+		.con2 .right{
+			float: right;
+			width: 203px;
+			border-top: solid 2px #cc8091;
+		}
+		.con2 .p1{
+			font-size: 24px;
+			font-family: '微软雅黑';
+			font-variant: small-caps;
+			color: #000000;
+			text-decoration: underline;
+		}
+		.con2 .p2{
+			font-size: 12px;
+			font-family: '楷体';
+			color: #676767;
+		}
+		.con2 .p3{
+			font-size: 116px;
+			color: #75b86b;
+			font-family: '微软雅黑';
+			font-style: italic;
+		}
+		.con2 .p4{
+			font-size: 55px;
+			color: #cc8091;
+			font-family: '微软雅黑';
+			position: relative;
+		}
+		.con2 .p5{
+			font-size: 21px;
+			position: absolute;
+			bottom: 20px;
+		}
+		.con2 .p6{
+			font-size: 12px;
+		}
+		.con3 .wrap3{
+			width: 641px;
+			position: relative;
+			height: 200px;
+		}
+		.con3 .wrap3 .what{
+			width: 40%;
+			position: absolute;
+			left: 0px;
+		}
+		.con3 .wrap3 .when{
+			width: 30%;
+			position: absolute;
+			left: 45%;
+		}
+		.con3 .wrap3 .how{
+			width: 20%;
+			position: absolute;
+			right: 0px;
+			height: 200px;
+		}
+		.con3 .wrap3 h3{
+			font-size: 16px;
+			font-family: '微软雅黑';
+			font-weight: bold;
+			text-decoration: underline;
+		}
+		.what h3{
+			color: #418c59;
+		}
+		.when h3{
+			color: #d2994f;
+		}
+		.how h3{
+			color: #cc7680;
+		}
+		.what p{
+			font-family: '宋体';
+			color: #767777;
+			font-size: 12px;
+			line-height: 16px;
+		}
+		.when p,.how p{
+			font-family: '微软雅黑';
+			color: #231815;
+			font-size: 12px;
+			line-height: 16px;
+			opacity: 0.7;
+		}
+		.how .howli{
+			position: absolute;
+			left: 0px;
+			bottom: 0px;
+		}
+		.how .howli span{
+			font-style: italic;
+			color: #cd4a48;
+		}
+		.con4 .right{
+			width: 458px;
+			float: right;
+		}
+		.con4 .left{
+			width: 415px;
+		}
+		.con4 .right .bottom{
+			width: 458px;
+			height: 358px;
+			background-color: #eeedd6;
+			margin-top: 20px;
+			position: relative;
+		}
+		.con4 .right .bottom li{
+			list-style: none;
+		}
+		.con4 .right .bottom .icon{
+			border: transparent solid 5px;
+			border-bottom: #000000 solid 5px;
+			float: left;
+			margin-top: 5px;
+			margin-right: 20px;
+		}
+		.con4 .right .bottom .ita{
+			font-style: italic;
+			font-size: 12px;
+			text-align: right;
+		}
+		.con4 .right .bottom .p1{
+			padding-top: 20px;
+		}
+		.con4 .right .bottom .p1 p{
+			font-size: 16px;
+			font-family: '宋体';
+			color: #5a5b5b;
+			margin: 20px;
+			text-align: left;
+		}
+		.con4 .right .bottom .red{
+			width: 260px;
+			height: 160px;
+			background-color: #d45d5c;
+			position: absolute;
+			bottom: 0px;
+			left: 0px;
+		}
+		.con4 .right .bottom .bla{
+			position: absolute;
+			right: 10px;
+			width: 165px;
+			bottom: 0px;
+			font-size: 14px;
+			color: #5a5b5b;
+			font-family: '黑体';
+			font-style: italic;
+			margin: 16px;
+			position: absolute;
+		}
+		.con4 .right .bottom .bla .bb{
+			font-size: 72px;
+			color: #d45d5c;
+			
+		}
+		.con4 .right .bottom .red .zero{
+			font-size: 110px;
+			color: #ffffff;
+			font-family: '微软雅黑';
+			padding-left: 10px;
+		}
+		.con4 .right .bottom .red .hr{
+			display: inline-block;
+			width: 2px;
+			height: 86px;
+			background-color: #ffffff;
+			margin-right: 10px;
+		}
+		.con4 .right .bottom .red .po{
+			position: absolute;
+			top: 30px;
+			color: #ffffff;
+			font-family: '黑体';
+		}
+		.po .big{
+			font-size: 21px;
+			font-style: italic;
+		}
+		.po .small{
+			font-size: 12px;
+		}
+
+		.con4 .left .top{
+			border-bottom: solid 2px #000000;
+			margin-bottom: 20px;
+		}
+		.con4 .left .top h1{
+			font-size: 42px;
+			color: #11456b;
+			font-family: '黑体';
+			font-weight: bold;
+		}
+		.con4 .left .top span{
+			font-size: 72px;
+			color: #f5e327;
+			font-style: italic;
+		}
+		.con4 .left .top p{
+			font-size: 33px;
+			color: #11456b;
+			font-family: '黑体';
+			font-weight: bold;
+		}
+		.con4 .left .bottom p{
+			font-family: "宋体";
+			font-size: 12px;
+			color: #767777;
+			line-height: 16px;
+		}
+		.con4 .left .bottom span{
+			float: left;
+			font-size: 70px;
+			font-family: '微软雅黑';
+			color: #f5e327;
+			width: 70px;
+			line-height: 70px;
+			padding-right: 10px;
+		}
+		.con4 .left .bottom img{
+			float: right;
+			margin: 10px;
+			margin-right: 0px;
+		}
+	</style>
+</head>
+<body>
+<div id="wrap">
+	<article class="con con1">
+		<div class="right">2016.03</div>
+		<div class="left"><div class="po">ife.baidu.com</div></div>
+	</article>
+	<article class="con con2">
+		<div class="right">
+			<p class="p1">About</p>
+			<P class="p1">Technologe</P>
+			<P class="p2">About technologe about technologe about technologe</P>
+			<p class="p3">700</p>
+			<p class="p4">
+				<span>3.2</span>
+				<span class="p5">css</span>
+				<span class="p6">csscsscsscss</span>
+			</p>
+		</div>
+		<div class="left">
+			<img src="1.jpg">
+			<div class="shadow1"></div>
+			<div class="shadow2"></div>
+		</div>
+	</article>
+	<article class="con con3">
+		<div class="wrap3">
+			<article class="what">
+				<h3>What</h3>
+				<p>秋风落叶散落离花，深情的寒秋总被黑夜所记。遗忘的季节总被流年搁浅，深记的远去演奏了时光的河畔，任清风吹过思念的深夜。沉沦在陌上的缘浅，三生三世落雪为证落雨为花。情深缘浅雨夜離殇，一路的离别相聚的回首。清澈了所有的风化，见证了所有的花开。遇到了所有的路人，夜已深秋风已冷。我们都是时光的赶路人，也是落雨的随行者，夕阳西下伴风秋夜随离别，忆墨经年秋已落。</p>
+			</article>
+			<article class="when">
+				<h3>When</h3>
+				<p>一直期待，今生看一场花落花开。那该是一场怎样的情深，或许如岁月花开那样。选择一个安静的地方，面朝大海。便一切春暖花开，期待花开后的时光。像雨帘一样清澈，像流年一样沉淀。像人生一样海纳百川，然而时光花落。一些被隐藏在流年里的清音。像流水一般洒落在这片黄昏的天空，时光的流沙走过。</p>
+				
+			</article>
+			<article class="how">
+				<h3>How</h3>
+				<p>一直期待，今生看一场花落花开。那该是一场怎样的情深，或许如岁月花开那样。</p>
+				<div class="howli">
+					<p>What------- <span>40%</span></p>
+					<p>What------- <span>30%</span></p>
+					<p>What------- <span>30%</span></p>
+				</div>
+			</article>
+		</div>
+	</article>
+	<article class="con con4">
+		<div class="right">
+			<div class="top">
+				<img src="2.jpg">
+			</div>
+			<div class="bottom">
+				<div class="p1">
+						<p><span class="icon"></span>前端前端前端前端端.......................<span class='ita'>前端</span></p>
+						<p><span class="icon"></span>前端前端前端............................<span class='ita'>前前端</span></p>
+						<p><span class="icon"></span>前端前端前端前端前前.....................<span class='ita'>前端</span></p>
+				</div>
+				<div>
+					<div class="red">
+						<span class="zero">0</span>
+						<span class="hr"></span>
+						<span class="po"><span class="big">ONE TWO<br>THREE FOUR FIVE</span>
+						<span class="small">hello world hello world <br> hello world</span></span>
+					</div>
+					<div class="bla">
+						<span class="bb">“</span><span>world hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world</span><span class="bb">”</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="left">
+			<div class="top">
+				<h1><span>THE</span> TECHNOLGE   OF FRONT</h1>
+				<p>前端技术领域</p>
+			</div>
+			<div class="bottom">
+				<p><span>前</span>端一直期待，今生看一场花落花开。那该是一场怎样的情深，或许如岁月花开那样。选择一个安静的地方，面朝大海。便一切春暖花开，期待花开后的时光。像雨帘一样清澈，像流年一样沉淀。像人生一样海纳百川，然而时光花落。一些被隐藏在流年里的清音。像流水一般洒落在这片黄昏的天空，时光的流沙走过。终究要把一些事情交给时间，终究要把一些遗忘交给岁月。<img src="3.jpg">岁月沉淀的越深，心中存疑的那一片海就更清澈。人生的旅途也就更花开，看过的大海。像迷失的森林一般，那么浩瀚零流。很多时候像自己的青春一样，有时候波涛汹涌。有时候风平浪静，有时候冲动有嘉。有时候不堪回首！</p>
+				<p style="text-indent:2em;">秋风落叶散落离花，深情的寒秋总被黑夜所记。遗忘的季节总被流年搁浅，深记的远去演奏了时光的河畔，任清风吹过思念的深夜。沉沦在陌上的缘浅，三生三世落雪为证落雨为花。情深缘浅雨夜離殇，一路的离别相聚的回首。清澈了所有的风化，见证了所有的花开。遇到了所有的路人，夜已深秋风已冷。我们都是时光的赶路人，也是落雨的随行者，夕阳西下伴风秋夜随离别，忆墨经年秋已落。纷纷流走的都是时间，而那些从未离开的。一路不言不语。却始终都在旅途的驿站，等待静落的花开与时间静好，从容的邂逅甚是一场繁华的落空，都是风雨的夜行者。注定与懂花擦肩而过，与黄昏失之交臂。与海阔逗留，寂静熬过的旅途，像一场无声的大雨。淋湿了所有的黑夜，写下了所有的结局。</p>
+
+			</div>
+		</div>
+	</article>
+</div>
+</body>
+</html>

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>html tag</title>
+	<meta charset='utf-8'>
+	<style type="text/css">
+	body{
+		margin: 0px;
+		padding: 0px;
+		font-family: '微软雅黑';
+		font-size: 16px;
+	}
+	ul,li{
+		list-style: none;
+	}
+	#header{
+		width: 100%;
+		height: 60px;
+		background-color: #333333;
+	}
+	#header .imgwrap{
+		float: left;
+		margin-left: 40px;
+		margin-top: 10px;
+	}
+	#header ul{
+		float: right;
+	}
+	#header ul li{
+		float: left;
+		margin-left: 10px;
+		list-style-type: disc;
+	}
+	#header ul li a{
+		text-decoration: none;
+		color: #ffffff;
+		display: block;
+		width: 80px;
+		font-size: 12px;
+	}
+	#wrap{
+		background-color: #dddddd;
+		padding: 20px;
+	}
+	#main{
+		margin-right: 410px;
+	}
+	article{
+		margin-top: 20px;
+		padding: 20px;
+		background-color: #ffffff;
+		border: solid 1px #cccccc;
+		box-shadow: 2px 2px 2px #bbbbbb; 
+	}
+	article h2{
+		font-size: 20px;
+	}
+	article h3{
+		font-size: 16px;
+		color: #333333;
+	}
+	article h6{
+		font-size: 12px;
+		font-weight: normal;
+		color: #cccccc;
+		margin: 0px;
+	}
+	article p{
+		text-indent: 2em;
+		line-height: 1.5em;
+	}
+	article img{
+		width: 300px;
+	}
+	.imglist li{
+		width: 150px;
+		border: solid 1px #bbbbbb;
+		text-align: center;
+		padding: 10px;
+		margin: 10px 0px;
+		float: left;
+		margin-left: 10px;
+	}
+	.imglist img{
+		width: 120px;
+	}
+	table{
+		width: 100%;
+		border: solid 1px #bbbbbb;
+		border-collapse:collapse;
+		border-spacing:0;
+	}
+	table tr{
+		height: 30px;
+		line-height: 30px;
+	}
+	table th{
+		background-color: #3c3c3c;
+		color: #ffffff;
+		text-align: left;
+	}
+	table .left{
+		width: 40%;
+	}
+	table .mid{
+		width: 40%;
+	}
+	
+	aside{
+		margin-top: 20px;
+		padding: 20px;
+		background-color: #ffffff;
+		border: solid 1px #cccccc;
+		box-shadow: 2px 2px 2px #bbbbbb; 
+		width: 350px;
+		float: right;
+		font-size: 14px;
+	}
+	aside .title{
+		border-left: solid 5px #999999;
+		padding-left: 20px;
+		height: 40px;
+		line-height: 40px;
+		margin-bottom: 20px;
+		font-size: 16px;
+		font-weight: bold;
+	}
+	.row1{
+		width: 100%;
+		height: 70px;
+		line-height: 30px;
+	}
+	.row2{
+		width: 100%;
+		height: 35px;
+		line-height: 35px;
+	}
+	.row1 span{
+		color: #cccccc;
+	}
+	.row-left{
+		width: 35%;
+		text-align: right;
+		float: left;
+	}
+	.row-right{
+		width: 65%;
+		text-align: left;
+		float: right;
+	}
+	.row1 input[type='text'],.row2 input[type='password'],.row1 input[type='password']{
+		width: 150px;
+		height: 20px;
+		line-height: 20px;
+		font-family: '微软雅黑';
+	}
+	.row2 textarea{
+		width: 90%;
+		height: 60px;
+		font-family: '微软雅黑';
+	}
+	.row input[type='button']{
+		width: 100%;
+		border-radius: 10px;
+		background-color: #3352cc;
+		color: #ffffff;
+		height: 45px;
+		text-align: center;
+		font-size: 16px;
+		font-family: '微软雅黑';
+		margin-top: 10px;
+	}
+	
+	footer{
+		width: 100%;
+		height: 100px;
+		line-height: 100px;
+		background-color: #000000;
+		text-align: center;
+		color: #ffffff;
+	}
+	</style>
+</head>
+<body>
+<header id="header">
+	<div class="imgwrap"><img src="bd.gif"></div>
+	<ul>
+		<li><a href="#">导航链接一</a></li>
+		<li><a href="#">导航链接二</a></li>
+		<li><a href="#">导航链接三</a></li>
+		<li><a href="#">导航链接四</a></li>
+	</ul>
+</header>
+
+<div id="wrap">
+<aside>
+<div class="row2 title">这里以后是一个侧栏，这是侧栏的标题</div>
+<div class="row1">
+	<div class="row-left">请输入邮箱地址：</div>
+	<div class="row-right"><input type="text" placeholder="这是一个文本输入框"><br><span>邮箱地址请按要求格式输入</span></div>
+
+	
+</div>
+<div class="row2">
+	<div class="row-left">请输入密码：</div>
+	<div class="row-right"><input type="password" placeholder="这是一个文本输入框"></div>
+</div>
+<div class="row1">
+	<div class="row-left">请重复输入密码：</div>
+	<div class="row-right"><input type="password" placeholder="这是一个文本输入框"></div>
+	<div class="row-right"><span>密码请为6-16位英文数字</span></div>
+</div>
+<div class="row2">
+	<div class="row-left">性别：</div>
+	<div class="row-right"><input type="radio" checked><span>男</span>
+	<input type="radio"><span>女</span></div>
+</div>
+<div class="row2">
+	<div class="row-left">城市：</div>
+	<div class="row-right"><select>
+		<option>北京</option>
+		<option>河北</option>
+	</select></div>
+</div>
+<div class="row2">
+	<div class="row-left">爱好：</div>
+	<div class="row-right"><input type="checkbox"><span>运动</span>
+	<input type="checkbox"><span>艺术</span>
+	<input type="checkbox"><span>科学</span></div>
+</div>
+<div class="row2">
+	<div class="row-left">个人描述：</div>
+	<div class="row-right"><textarea placeholder="这是一个多行输入框，输入您的个人描述"></textarea></div>
+</div>
+<div class="row" style="clear:both;">
+	<input type="button" value="确认提交">
+</div>
+
+</aside>
+<div id="main">
+<article>
+<h2>文章一级标题</h2>
+<h3>文章二级标题</h3>
+<h6>文章作者 文章发表时间</h6>
+<p>一直期待，今生看一场花落花开。那该是一场怎样的情深，或许如岁月花开那样。选择一个安静的地方，面朝大海。便一切春暖花开，期待花开后的时光。像雨帘一样清澈，像流年一样沉淀。像人生一样海纳百川，然而时光花落。一些被隐藏在流年里的清音。像流水一般洒落在这片黄昏的天空，时光的流沙走过。终究要把一些事情交给时间，终究要把一些遗忘交给岁月。岁月沉淀的越深，心中存疑的那一片海就更清澈。人生的旅途也就更花开，看过的大海。像迷失的森林一般，那么浩瀚零流。很多时候像自己的青春一样，有时候波涛汹涌。有时候风平浪静，有时候冲动有嘉。有时候不堪回首！</p>
+<img src="1.jpg">
+<p>秋风落叶散落离花，深情的寒秋总被黑夜所记。遗忘的季节总被流年搁浅，深记的远去演奏了时光的河畔，任清风吹过思念的深夜。沉沦在陌上的缘浅，三生三世落雪为证落雨为花。情深缘浅雨夜離殇，一路的离别相聚的回首。清澈了所有的风化，见证了所有的花开。遇到了所有的路人，夜已深秋风已冷。我们都是时光的赶路人，也是落雨的随行者，夕阳西下伴风秋夜随离别，忆墨经年秋已落。纷纷流走的都是时间，而那些从未离开的。一路不言不语。却始终都在旅途的驿站，等待静落的花开与时间静好，从容的邂逅甚是一场繁华的落空，都是风雨的夜行者。注定与懂花擦肩而过，与黄昏失之交臂。与海阔逗留，寂静熬过的旅途，像一场无声的大雨。淋湿了所有的黑夜，写下了所有的结局。沉默了的所有的言语，唯独你的那场青春依旧风花雪月，几个落寞的季节过去。你依然站在沉淀的岁月中独望静好，流年清浅岁月情深。那是一场怎样的时光，才可以朝朝暮暮。或许走过的安静才是最好的流年，熬过的曾经总是刻苦。</p></article>
+<article>
+<h2>另一篇文章一级标题</h2>
+<h3>文章二级标题</h3>
+<h6>文章作者 文章发表时间</h6>
+<p>细水的时光总是难忘，冰冻过的雪山，像静静的回忆一样，以为站在黄昏的尽头。就可以诉说所有的黑夜，以为把所有的经年都放下。就可以看得风轻云淡，流失的天空里总是充满着那一丝。静美的忧伤，是曾经落花的痕迹。还是流年里的访客，似乎一切只待花开。便匆匆走过。物是琉璃便花开人已非，流年的落花，见证了谁的等待，成了一往情深而遥不可及的梦，沧桑的变迁时光的洗礼。早已把这一切摧残的疲惫不堪，记忆还在时光中游荡，而那场路过的流年，似乎还在忧伤中前进。时至至今未曾淡去，经年以后试着从中找出风花雪月的离别。试着把一切看得风轻云淡，试着将一切轻描淡写带过。试着把一切交给时光，可时光的深情越记越深。似乎一切在时光面前都是那么铭记，走过你的雪花路过你的寒冬。仿佛人间4月天唯美如春忧伤如画，落花的唯美那么静。静得能听见世界的尽头，落花的声音那么冷。冷的足以凄凉一个世界，一程山水。</p>
+<p>一份珍藏，岁月的离去都是生命的规律。所谓聚散终有时，何必一往情深总有一些故事要历经沧桑，总有一些渐远不辞而别。慢慢消失在这个烟火的流年里。不带半点疑虑，不留任何声色。转眼已隔随之天涯。或许生命的懂得是一幅花开。一路遥远一路风雨。一路陪伴一路花开，阅过潮起潮落或许才是花落的懂得。落寞沧海或许才是故事的告一段落，流年的葬雨尘世岁月的雨落以后，都是时光的痕迹也是岁月见证，那年那月正如那场寒冬的冰雪。刺眼的寒风冰冻了整座思念，带走了所有的离别留下了永夜。依然记得那个黄昏。从你口中说出见再坚决如铁，还是那个黑夜。还是那个黎明。还是那个日出日落。如今至此不离不弃！你的回忆终于写成诗。静静地放在岁月里一路浅唱，花开流年终于如你所愿。</p>
+<img src="1.jpg">
+<ul>
+	<li>列表项目一</li>
+	<li>列表项目二</li>
+	<li>列表项目三</li>
+</ul>
+</article>
+
+<article class="imglist">
+<h2>图片</h2>
+<ul>
+	<li>
+		<span>好看的图片</span>
+		<img src="1.jpg">
+	</li>
+	<li>
+		<span>好看的图片</span>
+		<img src="1.jpg">
+	</li>
+	<li>
+		<span>好看的图片</span>
+		<img src="1.jpg">
+	</li>
+	<li>
+		<span>好看的图片</span>
+		<img src="1.jpg">
+	</li>
+	<li>
+		<span>好看的图片</span>
+		<img src="1.jpg">
+	</li>
+	<li>
+		<span>好看的图片</span>
+		<img src="1.jpg">
+	</li>
+	<li>
+		<span>好看的图片</span>
+		<img src="1.jpg">
+	</li>
+	<li>
+		<span>好看的图片</span>
+		<img src="1.jpg">
+	</li>
+</ul>
+<div style="clear:both;"></div>
+</article>
+<article>
+<h2>最后一篇文章一级标题</h2>
+<h3>文章二级标题</h3>
+<h6>文章作者 文章发表时间</h6>
+<ol>
+	<li>排名1</li>
+	<li>排名2</li>
+	<li>排名3</li>
+</ol>
+<p>下面是一个表格</p>
+<table border="1">
+	<tr>
+		<th class="left">表头</th>
+		<th class="mid">表头</th>
+		<th class="right">表头</th>
+	</tr>
+	<tr>
+		<td class="left">表内容单元格</td>
+		<td class="mid">表内容单元格</td>
+		<td class="right"><a href="#">操作</a></td>
+	</tr>
+	<tr>
+		<td class="left">表内容单元格</td>
+		<td class="mid">表内容单元格</td>
+		<td class="right"><a href="#">操作</a></td>
+	</tr>
+	<tr>
+		<td class="left">表内容单元格</td>
+		<td class="mid">表内容单元格</td>
+		<td class="right"><a href="#">操作</a></td>
+	</tr>
+	<tr>
+		<td class="left">总计</td>
+		<td colspan=2>1000</td>
+	</tr>
+</table>
+</article>
+</div>
+
+</div>
+<footer>版权所有@</footer>
+</body>
+</html>
