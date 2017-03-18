@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>颜色选择器</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+	body{
+		margin: 0px;
+		padding: 0px;
+	}
+	#colorline{
+		width: 30px;
+		height: 360px;
+		float: left;
+		background:-webkit-linear-gradient(top,#ff0000,#ff00ff,#0000ff,#00ffff,#00ff00,#ffff00,#ff0000);
+	}
+	
+	#display{
+		float: left;
+		width: 360px;
+		height: 360px;
+		background-color: rgb(255,0,0);
+		margin: 0px 10px;
+		position: relative;
+	}
+	#iconwrap{
+		width: 10px;
+		height: 10px;
+		position: absolute;
+		border-radius: 10px;
+		border: solid 1px #000000;
+		bottom: 0px;
+		left: 0px;
+	}
+	.icon{
+		width: 10px;
+		height: 10px;
+		border-radius: 10px;
+		border: solid 2px #ffffff;
+	}
+	.gra{
+		width: 360px;
+		height: 360px;
+		background: url("overlay.png");
+		background-size: cover;
+	}
+	#rgb{
+		width: 120px;
+		float: left; 
+		margin-left: 10px;
+	}
+	#rgb div{
+		margin-bottom: 10px;
+	}
+	#rgb input{
+		width: 80px;
+		height: 35px;
+		line-height: 35px;
+		
+	}
+	#colorplay{
+		width: 200px;
+		height: 200px;
+		float: left;
+		margin-left: 10px;
+	}
+	</style>
+	
+</head>
+<body>
+
+<div id="display">
+	<div id="iconwrap"><div class="icon"></div></div>
+	<div class="gra"></div>
+</div>
+<div id="colorline"></div>
+<div id="rgb">
+	<div>R <input id="r" type="text"></div>
+	<div>G <input id="g" type="text"></div>
+	<div>B <input id="b" type="text"></div>
+	<hr>
+	<div>H <input id="h" type="text"></div>
+	<div>S <input id="s" type="text"></div>
+	<div>L <input id="l" type="text"></div>
+	<div># <input id="v" type="text"></div>
+</div>
+<div id="colorplay"></div>
+
+<script type="text/javascript">
+	var colors = [[255,0,0],[255,0,255],[0,0,255],[0,255,255],[0,255,0],[255,255,0],[255,0,0]];
+	var select = document.getElementById("colorline");
+	var play = document.getElementById("display");
+	var rvalue = document.getElementById("r");
+	var gvalue = document.getElementById("g");
+	var bvalue = document.getElementById("b");
+	var hvalue = document.getElementById("h");
+	var svalue = document.getElementById("s");
+	var lvalue = document.getElementById("l");
+	var vvalue = document.getElementById("v");
+	var colorplay = document.getElementById("colorplay");
+	var iconwrap = document.getElementById("iconwrap");
+	var colorvalue = [255,0,0];
+	window.onload = function(){
+		
+		//选中色彩条上颜色触发事件
+		select.onclick = selectColor;
+
+		//点击色彩面板触发事件
+		play.onclick = function(e){
+			var x = e.pageX || e.clientX;
+			var y = e.pageY || e.clientY;
+			computer(x, y);  //根据坐标值计算rgb值并显示
+			setIcon(x, y);  //根据坐标设置点击框
+		}
+
+		//输入框内容改变触发事件
+		rvalue.onchange = valuechange;
+		gvalue.onchange = valuechange;
+		bvalue.onchange = valuechange;
+	}
+
+	function selectColor(e){
+		var posX = e.pageX || e.clientX;
+		var posY = e.pageY || e.clientY;
+		//console.log(posY +", "+posX);
+		if((posY >=0)&&(posY<60)){
+			var r = Math.round((colors[1][0] - colors[0][0])/60*posY + colors[0][0]);
+			var g = Math.round((colors[1][1] - colors[0][1])/60*posY + colors[0][1]);
+			var b = Math.round((colors[1][2] - colors[0][2])/60*posY + colors[0][2]);
+				
+		}else if((posY >=60)&&(posY<120)){
+			var r = Math.round((colors[2][0] - colors[1][0])/60*(posY-60) + colors[1][0]);
+			var g = Math.round((colors[2][1] - colors[1][1])/60*(posY-60) + colors[1][1]);
+			var b = Math.round((colors[2][2] - colors[1][2])/60*(posY-60) + colors[1][2]);
+		}else if((posY >=120)&&(posY<180)){
+			var r = Math.round((colors[3][0] - colors[2][0])/60*(posY-120) + colors[2][0]);
+			var g = Math.round((colors[3][1] - colors[2][1])/60*(posY-120) + colors[2][1]);
+			var b = Math.round((colors[3][2] - colors[2][2])/60*(posY-120) + colors[2][2]);
+		}else if((posY >=180)&&(posY<240)){
+			var r = Math.round((colors[4][0] - colors[3][0])/60*(posY-180) + colors[3][0]);
+			var g = Math.round((colors[4][1] - colors[3][1])/60*(posY-180) + colors[3][1]);
+			var b = Math.round((colors[4][2] - colors[3][2])/60*(posY-180) + colors[3][2]);
+		}else if((posY >=240)&&(posY<300)){
+			var r = Math.round((colors[5][0] - colors[4][0])/60*(posY-240) + colors[4][0]);
+			var g = Math.round((colors[5][1] - colors[4][1])/60*(posY-240) + colors[4][1]);
+			var b = Math.round((colors[5][2] - colors[4][2])/60*(posY-240) + colors[4][2]);
+		}else if((posY >=300)&&(posY<360)){
+			var r = Math.round((colors[6][0] - colors[5][0])/60*(posY-300) + colors[5][0]);
+			var g = Math.round((colors[6][1] - colors[5][1])/60*(posY-300) + colors[5][1]);
+			var b = Math.round((colors[6][2] - colors[5][2])/60*(posY-300) + colors[5][2]);
+		}
+		r = r < 0 ? -r : r;
+		g = g < 0 ? -g : g;
+		b = b < 0 ? -b : b;
+		colorvalue = [r,g,b];
+		console.log(colorvalue);
+		play.style.background = "rgb("+r+","+g+","+b+")";
+
+		setRGB(r,g,b);
+	}
+
+	//RGB值由十进制转换为十六进制
+	function convertToHX(r,g,b){
+		return convert(r) + convert(g) + convert(b);
+	}
+
+	//设置input输入框内的RGB和HSL值
+	function setRGB(r,g,b){
+		rvalue.value = r;
+		gvalue.value = g;
+		bvalue.value = b;
+		vvalue.value = convertToHX(r,g,b);
+
+		colorplay.style.background = "rgb("+r+","+g+","+b+")";
+
+		var hsl = rgbToHsl(r,g,b);
+		hvalue.value = hsl[0];
+		svalue.value = hsl[1];
+		lvalue.value = hsl[2];
+	}
+
+	//根据坐标值计算对应的RGB值
+	function computer(x, y){
+		var r,g,b;
+		var posx = x-10;
+		var posy = y;
+		console.log("x" + x +", y" + y);
+
+		console.log(colorvalue);
+		r = g = b = Math.round(255 - (255 / 360 * posy));
+
+		if(colorvalue[0] == 255){
+			if(colorvalue[1] == 0){
+				g = Math.round(g / 360 * (360-posx));
+				var bb = Math.round(255-(255-colorvalue[2])/360*posx);
+				b = Math.round(bb/360*(360-posy));
+				b = b == 0 ? g : b;
+			}else{
+				//r值不变
+				b = Math.round(b / 360 * (360-posx));
+				var gg = Math.round(255-(255-colorvalue[1])/360*posx);
+				g = Math.round(gg/360 * (360-posy));
+				g = g == 0 ? b : g;
+			}
+		}else if(colorvalue[0] == 0){
+			if(colorvalue[1] == 255){
+				//g值不变
+				r = Math.round(r / 360 * (360-posx));
+				var bb = Math.round(255-(255-colorvalue[2])/360 * posx);
+				b = Math.round(bb/360 * (360-posy));
+				b = b == 0 ? r : b;
+			}else{
+				//b值不变
+				r = Math.round(r/360 * (360-posx));
+				var gg = Math.round(255-(255-colorvalue[1])/360*posx);
+				g = Math.round(gg/360 * (360-posy));
+				g = g == 0 ? r : g;
+			}
+		}else{
+			if(colorvalue[1] == 255){
+				//g值不变
+				b = Math.round(b / 360 * (360-posx));
+				var rr = Math.round(255-(255-colorvalue[0])/360 * posx);
+				r = Math.round(rr/360 * (360-posy));
+				r = r == 0 ? b : r;
+			}else{
+				//b值不变
+				g = Math.round(g / 360 * (360-posx));
+				var rr = Math.round(255 - (255-colorvalue[0])/360 * posx);
+				r = Math.round(rr/360 * (360-posy));
+				r = r == 0 ? g : r;
+			}
+		}
+
+		console.log(r+", "+g+", "+b);
+		setRGB(r,g,b);
+	}
+
+	//根据坐标值定位光标
+	function setIcon(x,y){
+		var top = y-5;
+		var left = x-15;
+		iconwrap.style.left = left + "px";
+		iconwrap.style.top = top + "px";
+	}
+
+	//input内容变化时触发的事件
+	function valuechange(){
+		var rr = rvalue.value;
+		var gg = gvalue.value;
+		var bb = bvalue.value;
+		console.log(rr +", "+gg+", "+bb);
+
+		var max = Math.max(rr, gg, bb);
+		var min =  Math.min(rr, gg, bb);
+		var x = Math.round(360*(max-min)/max);
+		var y = Math.round(360-(360*max/255));
+		
+
+		if(rr == max){
+			if(gg == min){
+				var mid = Math.round(255+((360*360*bb)/((360-y)*x))-(255*360/x));
+				colorvalue = [255, 0, mid];
+			}else{
+				var mid = Math.round(255+((360*360*gg)/((360-y)*x))-(255*360/x));
+				colorvalue = [255, mid, 0];
+			}
+		}else if(gg == max){
+			if(rr == min){
+				var mid = Math.round(255+((360*360*bb)/((360-y)*x))-(255*360/x));
+				colorvalue = [0, 255, mid];
+			}else{
+				var mid = Math.round(255+((360*360*rr)/((360-y)*x))-(255*360/x));
+				colorvalue = [mid, 255, 0];
+			}
+		}else{
+			if(rr == min){
+				var mid = Math.round(255+((360*360*gg)/((360-y)*x))-(255*360/x));
+				colorvalue = [0, mid, 255];
+			}else{
+				var mid = Math.round(255+((360*360*rr)/((360-y)*x))-(255*360/x));
+				colorvalue = [mid, 0, 255];
+			}
+		}
+		console.log(colorvalue);
+		play.style.background = "rgb("+r+","+g+","+b+")";
+		iconwrap.style.top = y + "px";
+		iconwrap.style.left = (x + 10) + "px"; 
+
+		var hsl = rgbToHsl(r,g,b);
+		hvalue.value = hsl[0];
+		svalue.value = hsl[1];
+		lvalue.value = hsl[2];
+		vvalue.value = convertToHX(r,g,b);
+	}
+
+	function convert(value){
+		var vv = value.toString(16);
+		return vv.length>1 ? vv : "0"+vv;
+	}
+
+	//rgb颜色值转hsl值
+	function rgbToHsl(r, g, b){
+	    r /= 255, g /= 255, b /= 255;
+	    var max = Math.max(r, g, b), min = Math.min(r, g, b);
+	    var h, s, l = (max + min) / 2;
+
+	    if(max == min){
+	        h = s = 0; // achromatic
+	    }else{
+	        var d = max - min;
+	        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+	        switch(max){
+	            case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+	            case g: h = (b - r) / d + 2; break;
+	            case b: h = (r - g) / d + 4; break;
+	        }
+	        h /= 6;
+	    }
+	    return [Math.round(h*100), Math.round(s*100), Math.round(l*100)];
+	}
+</script>
+</body>
+</html>

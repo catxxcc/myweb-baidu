@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>巨型画布</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		body{
+			margin: 0px;
+			padding: 0px;
+		}
+		#wrap{
+			
+			position: relative;
+			overflow: hidden;
+		}
+		#bigimg{
+			width: 19200px;
+			height: 10800px;
+		}
+		#smallimg, #smallwrap{
+			width: 480px;
+			height: 270px;
+			position: absolute;
+			top: 0px;
+			left: 0px;
+		}
+		#circle{
+			border: solid 1px red;
+			position: absolute;
+			z-index: 10;
+		}
+	</style>
+</head>
+<body>
+<div id="wrap">
+	<div id="smallwrap">
+		<div id="circle"></div>
+		<img src="1.jpg" id="smallimg">
+	</div>
+	<img id="bigimg" src="1.jpg">
+	
+</div>
+<script type="text/javascript">
+	var startX, startY, endX, endY, dragging = false, flag = false;
+	var wrap = document.getElementById("wrap");
+	var bigimg = document.getElementById("bigimg");
+	var bigimg = {
+		elm : document.getElementById("bigimg"),
+		left : 0,
+		top : 0
+	};
+	var circle = document.getElementById("circle");
+	var rate;
+
+	window.onload = function(){
+		var screenwidth = window.innerWidth;
+		var screenheight = window.innerHeight;
+		
+
+		wrap.style.height = screenheight + "px";
+
+		bindEvent(bigimg.elm, 'mousedown', down);
+		
+		bindEvent(bigimg.elm, 'mouseup', up);
+
+		var orgrate = screenheight / 10800;
+		circle.style.height = 270 * orgrate + "px";
+		circle.style.width = 480 * orgrate + "px";
+		circle.style.top = bigimg.left * orgrate + "px";
+		circle.style.left = bigimg.top * orgrate + "px";
+		rate = 270/10800;
+	}
+	
+	function bindEvent(node, type, func) { //事件绑定方法
+        if (node.addEventListener) {
+            node.addEventListener(type, func, false);
+        } else if (node.attachEvent) {
+            node.attachEvent("on" + type, func);
+        } else {
+            node["on" + type] = func;
+        }
+    }
+
+    function removeEvent(node, type){
+    	if(node.removeEventListener){
+    		node.removeEventListener(type);
+    	}
+    }
+
+	function down(e){
+		startX = e.pageX || (e.clientX);
+	    startY = e.pageY || (e.clientY);
+		if (e.stopPropagation){ 
+		    // this code is for Mozilla and Opera 
+		    e.stopPropagation(); 
+		    e.preventDefault();
+		}
+		bindEvent(bigimg.elm, 'mousemove', move);
+		console.log(flag);
+	}
+
+	function move(e){
+		if(startX>=0){
+	        //e=event?event:window.event;
+	        endX = e.pageX || (e.clientX );
+	        endY = e.pageY || (e.clientY );
+	        flag = true;
+	        console.log(flag);
+	  	}
+	}
+	           
+	function up(e){
+		if(!flag){
+			//鼠标单击事件
+			alert("dd");
+		}else{
+			bigimg.elm.style.marginLeft = (bigimg.left + endX - startX) + "px";
+			bigimg.elm.style.marginTop = (bigimg.top + endY - startY) + "px";
+			bigimg.left = bigimg.left + endX - startX;
+			bigimg.top = bigimg.top + endY - startY;
+			circle.style.top = -bigimg.top * rate + "px";
+			circle.style.left = -bigimg.left * rate + "px";
+			startX=-1;
+		}
+		removeEvent(bigimg, 'mousemove');
+	}
+</script>
+</body>
+</html>

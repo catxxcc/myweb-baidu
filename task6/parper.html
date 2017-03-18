@@ -169,6 +169,41 @@
 		.con4 .left{
 			width: 415px;
 		}
+		.con4 .right .top{
+			position: relative;
+		}
+		.con4 .right .sha{
+			width: 458px;
+			height: 61px;
+			background-color: #000000;
+			opacity: 0.4;
+			position: absolute;
+			bottom: 5px;
+		}
+		.con4 .right .sha .line{
+			width: 3px;
+			height: 44px;
+			background-color: #72b16a;
+			line-height: 61px;
+			float: left;
+			margin: 10px 20px;
+		}
+		.con4 .right .sha .t1{
+			font-family: '微软雅黑';
+			font-size: 26px;
+			color: #ffffff;
+			float: left;
+			margin-top: 20px;
+		}
+		.con4 .right .sha .t2{
+			font-size: 12px;
+			font-family: '微软雅黑';
+			font-style: italic;
+			color: #76b16a;
+			float: left;
+			margin-top: 35px;
+			word-spacing:140%;
+		}
 		.con4 .right .bottom{
 			width: 458px;
 			height: 358px;
@@ -213,18 +248,31 @@
 			position: absolute;
 			right: 10px;
 			width: 165px;
-			bottom: 0px;
+			margin-top: 40px;
+		}
+		.con4 .right .bottom .bla p{
 			font-size: 14px;
 			color: #5a5b5b;
 			font-family: '黑体';
 			font-style: italic;
-			margin: 16px;
-			position: absolute;
+			line-height: 16px;
 		}
-		.con4 .right .bottom .bla .bb{
+		
+		.con4 .right .bottom .bla p:before{
+			content: '“';
 			font-size: 72px;
 			color: #d45d5c;
-			
+			position: absolute;
+			top: 15px;
+			left: -50px;
+			margin-right: 20px;
+		}
+		.con4 .right .bottom .bla p:after{
+			content: '”';
+			font-size: 72px;
+			color: #d45d5c;
+			position: absolute;
+			bottom: -30px;
 		}
 		.con4 .right .bottom .red .zero{
 			font-size: 110px;
@@ -346,6 +394,11 @@
 		<div class="right">
 			<div class="top">
 				<img src="2.jpg">
+				<div class="sha">
+					<div class="line"></div>
+					<div class="t1">前端技术</div>
+					<div class="t2">前端技术前端技术</div>
+				</div>
 			</div>
 			<div class="bottom">
 				<div class="p1">
@@ -361,7 +414,7 @@
 						<span class="small">hello world hello world <br> hello world</span></span>
 					</div>
 					<div class="bla">
-						<span class="bb">“</span><span>world hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world</span><span class="bb">”</span>
+						<p>&nbsp;&nbsp; &nbsp;&nbsp;world hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world</p>
 					</div>
 				</div>
 			</div>

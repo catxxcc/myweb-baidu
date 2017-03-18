@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		#display span{
+			display: inline-block;
+			padding: 10px;
+			background-color: red;
+			color: #ffffff;
+			margin-left: 10px;
+		}
+	</style>
+</head>
+<body>
+	<input id="in" type="text">
+	<input id="inleft" value="左侧输入" type="button">
+	<input id="inright" value="右侧输入" type="button">
+	<input id="outleft" value="左侧输出" type="button">
+	<input id="outright" value="右侧输出" type="button">
+	<div id="display">
+		
+	</div>
+</body>
+<script type="text/javascript">
+	var input = document.getElementById("in");
+		var inleft = document.getElementById("inleft");
+		var inright = document.getElementById("inright");
+		var outleft = document.getElementById("outleft");
+		var outright = document.getElementById("outright");
+		var display = document.getElementById("display");
+	(function(){
+		inleft.onclick = inleftfn;
+		inright.onclick = inrightfn;
+		outleft.onclick = outleftfn;
+		outright.onclick = outrightfn;
+	})();
+
+	var list = [];
+	function inleftfn(){
+		list.unshift(input.value);
+		play();
+	}
+	function inrightfn(){
+		list.push(input.value);
+		play();
+	}
+	function outleftfn(){
+		alert(list.shift());
+		play();
+	}
+	function outrightfn(){
+		alert(list.pop());
+		play();
+	}
+	function play(){
+		var str = "";
+		for(var i=0;i<list.length;i++){
+			str += "<span>" + list[i] +"</span>";
+		}
+		display.innerHTML = str;
+	}
+</script>
+</html>
