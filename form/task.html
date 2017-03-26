@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		body{
+			font-size: 16px;
+			font-family: "微软雅黑";
+		}
+		.con{
+			width: 150px;
+			height: 35px;
+			line-height: 35px;
+			margin-left: 20px;
+			border: solid 1px #999999;
+			border-radius: 5px;
+		}
+		.valite{
+			width: 50px;
+			height: 35px;
+			line-height: 35px;
+			margin-left: 20px;
+			background-color: blue;
+			color: #ffffff;
+			border-radius: 5px;
+			border: solid 1px blue;
+		}
+		.tit{
+			color: #999999;
+		}
+		.wrap{
+			margin: 20px;
+		}
+	</style>
+</head>
+<body>
+<div class="wrap">
+	姓名：<input class="con" type="text" id="name">
+	<input class="valite" type="button" id="valiteName" value="验证">
+	<span id="tip" class="tit">必填，字符数为4-16位</span>
+</div>
+
+</body>
+<script type="text/javascript">
+
+	var valite = document.getElementById("valiteName");
+	var inputname = document.getElementById("name");
+	var tip = document.getElementById("tip");
+
+	window.onload = function(){
+		valite.onclick = valiteTo;
+	}
+
+	function valiteTo(){
+		var name = inputname.value;
+		console.log(name.length);
+		if(name == ""){
+			tip.innerText = "姓名不能为空";
+			tip.style.color = "red";
+			inputname.style.borderColor = "red";
+		}else if((name.length < 4)||(name.length>16)){
+			tip.innerText = "必须为4-16位字符";
+			tip.style.color = "red";
+			inputname.style.borderColor = "red";
+		}else{
+			tip.innerText = "字符格式正确";
+			tip.style.color = "green";
+			inputname.style.borderColor = "green";
+		}
+	}
+</script>
+</html>

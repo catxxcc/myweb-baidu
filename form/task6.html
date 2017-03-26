@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>UI组件之浮出层</title>
+	<meta charset="utf-8">
+</head>
+<body>
+<input type="button" id="button" value="弹出浮出层">
+<script type="text/javascript">
+	var body = document.getElementsByTagName("body")[0];
+	window.onload = function(){
+		var button = document.getElementById("button");
+		button.onclick = function(){
+			flow("弹出层","这是一个弹出层",500,300);}
+	}
+	
+	function flow(tit,con,width,height){
+		var div = document.createElement("div");
+		div.style.position = "fixed";
+		div.style.width = width + "px";
+		div.style.height = height + "px";
+		div.style.left = "50%";
+		div.style.marginLeft = -width/2 + "px";
+		div.style.top = "50%";
+		div.style.marginTop = -height/2 + "px";
+		div.style.border = "solid 1px #999999"
+		div.style.zIndex = 9999;
+		div.style.backgroundColor = "#ffffff";
+		div.setAttribute("id","wid");
+
+		var div1 = document.createElement("div");
+		div1.style.height = "50px";
+		div1.style.lineHeight = "50px";
+		div1.style.padding = "0px 10px";
+		div1.innerText = tit;
+		div1.style.backgroundColor = "#999999";
+		div1.style.color = "#ffffff";
+
+		var div2 = document.createElement("div");
+		div2.style.padding = "10px";
+		div2.innerText = con;
+		div2.style.minHeight = "170px";
+
+		var qdbtn = document.createElement("div");
+		qdbtn.innerText = "确定";
+		qdbtn.style.width = "120px";
+		qdbtn.style.height = "50px";
+		qdbtn.style.lineHeight = "50px";
+		qdbtn.style.backgroundColor = "#999999";
+		qdbtn.style.color = "#ffffff";
+		qdbtn.style.float = "right";
+		qdbtn.style.textAlign = "center";
+		qdbtn.style.marginRight = "10px";
+
+		var qxbtn = document.createElement("div");
+		qxbtn.innerText = "取消";
+		qxbtn.style.width = "120px";
+		qxbtn.style.height = "50px";
+		qxbtn.style.lineHeight = "50px";
+		qxbtn.style.backgroundColor = "#999999";
+		qxbtn.style.color = "#ffffff";
+		qxbtn.style.float = "right";
+		qxbtn.style.textAlign = "center";
+		qxbtn.style.marginRight = "10px";
+
+		div.append(div1);
+		div.append(div2);
+		
+		div.append(qxbtn);
+		div.append(qdbtn);
+
+		//遮罩层
+		var shadow = document.createElement("div");
+		shadow.style.position = "fixed";
+		shadow.style.left = "0px";
+		shadow.style.top = "0px";
+		shadow.style.right = "0px";
+		shadow.style.bottom = "0px";
+		shadow.style.backgroundColor = "#999999";
+		shadow.style.opacity = 0.3;
+		shadow.style.zIndex = 999;
+		shadow.setAttribute("id","shadow");
+
+		shadow.onclick = function(){
+			cancel(div,shadow);
+		};
+		qdbtn.onclick = function(){
+			cancel(div,shadow);
+		};
+		qxbtn.onclick = function(){
+			cancel(div,shadow);
+		};
+
+		body.append(shadow);
+		body.append(div);
+
+	}
+
+	function cancel(wid, sha){
+		body.removeChild(wid);
+		body.removeChild(sha);
+	}
+</script>
+</body>
+</html>

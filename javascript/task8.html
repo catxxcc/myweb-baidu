@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<style type="text/css">
+	.wrap{
+		border: solid 2px #000;
+		background-color: #ffffff;
+	}
+	.wrap1{
+		display: -webkit-flex;
+		display: flex;
+		width: 1200px;
+		height: 100px;
+	}
+	.wrap2{
+		margin: 10px;
+		display: flex;
+		width: 30%;
+		flex-direction: row;
+	}
+	.wrap3{
+		margin: 10px;
+		display: flex;
+		flex-direction: row;
+	}
+	.wrap4{
+		margin: 5px;
+	}
+	.apple .wrap3{
+		width: 30%;
+	}
+	.phone1 .wrap4{
+		width: 25%;
+	}
+	.phone3 .wrap4{
+		width: 50%;
+	}
+	.note .wrap3{
+		width: 50%;
+	}
+	.human .wrap4{
+		width: 30%;
+	}
+	.program .wrap4{
+		width: 50%;
+		display: flex;
+		flex-direction: row;
+	}
+	.cat{
+		width: 100%;
+		margin: 10px;
+	}
+	</style>
+</head>
+<body>
+	<div id="tree" class="wrap wrap1">
+		<div class="wrap wrap2 apple">
+			<div class="wrap wrap3 phone1">
+				<div class="wrap wrap4 pear"></div>
+				<div class="wrap wrap4 pig"></div>
+				<div class="wrap wrap4 colo"></div>
+				<div class="wrap wrap4 soccer"></div>
+			</div>
+			<div class="wrap wrap3 phone2">
+			</div>
+			<div class="wrap wrap3 phone3">
+				<div class="wrap wrap4 book"></div>
+				<div class="wrap wrap4 school"></div> 
+			</div>
+		</div>
+		<div class="wrap wrap2 note">
+			<div class="wrap wrap3 human">
+				<div class="wrap wrap4 code"></div>
+				<div class="wrap wrap4 operate"></div>
+				<div class="wrap wrap4 man"></div>
+			</div>
+			<div class="wrap wrap3 program">
+				<div class="wrap wrap4 element">
+					<div class="wrap wrap5 cat"></div>
+				</div>
+				<div class="wrap wrap4 glass"></div>
+			</div>
+		</div>
+		<div class="wrap wrap2 fish"></div>
+	</div>
+	<div>
+		<input id="prev" type="button" value="前序遍历">
+		<input id="mid" type="button" value="中序遍历">
+		<input id="next" type="button" value="后序遍历">
+	</div>
+	<script type="text/javascript">
+	var tree = document.getElementById("tree");
+	var prev = document.getElementById("prev");
+	var mid = document.getElementById("mid");
+	var next = document.getElementById("next");
+	var curnode = {};
+	window.onload = function(){
+		if(tree){
+			curnode.nodename = tree;
+			curnode.flag = false;
+			curnode.parent = null;
+			findChildNodes(curnode);
+		}
+		// prev.onclick = prevErgodic; //前序遍历
+		// mid.onclick = midErgodic;   //中序遍历
+		// next.onclick = nextErgodic; //后序遍历
+	}
+	
+	//遍历二叉树结构，保存为对象
+	function findChildNodes(cur){
+		if(!cur) return;
+		cur.child = [];
+		var child = cur.nodename.childNodes;
+		for(var i=0;i<child.length;i++){
+			//console.log(child[i]);
+			if(child[i].nodeType == 1){
+				var node1 = {nodename:child[i],flag:false,parent:cur};
+				cur.child.push(node1);
+			}
+		}
+		for(var i=0;i<cur.child.length;i++){
+			findChildNodes(cur.child[i]);
+		}
+	}
+	</script>
+</body>
+</html>

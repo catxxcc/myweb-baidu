@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<style type="text/css">
+	.wrap{
+		border: solid 2px #000;
+		background-color: #ffffff;
+	}
+	.wrap1{
+		display: -webkit-flex;
+		display: flex;
+		width: 600px;
+		height: 100px;
+	}
+	.wrap2{
+		margin: 10px;
+		width: 50%;
+		display: flex;
+		flex-direction: row;
+	}
+	.wrap3{
+		margin: 10px;
+		width: 50%;
+		display: flex;
+		flex-direction: row;
+	}
+	.wrap4{
+		margin: 10px;
+		width: 50%;
+	}
+
+	</style>
+</head>
+<body>
+	<div id="tree" class="wrap wrap1">
+		<div class="wrap wrap2">
+			<div class="wrap wrap3">
+				<div class="wrap wrap4"></div>
+				<div class="wrap wrap4"></div>
+			</div>
+			<div class="wrap wrap3">
+				<div class="wrap wrap4"></div>
+				<div class="wrap wrap4"></div>
+			</div>
+		</div>
+		<div class="wrap wrap2">
+			<div class="wrap wrap3">
+				<div class="wrap wrap4"></div>
+				<div class="wrap wrap4"></div>
+			</div>
+			<div class="wrap wrap3">
+				<div class="wrap wrap4"></div>
+				<div class="wrap wrap4"></div>
+			</div>
+		</div>
+	</div>
+	<div>
+		<input id="prev" type="button" value="前序遍历">
+		<input id="mid" type="button" value="中序遍历">
+		<input id="next" type="button" value="后序遍历">
+	</div>
+</body>
+<script type="text/javascript">
+	var tree = document.getElementById("tree");
+	var prev = document.getElementById("prev");
+	var mid = document.getElementById("mid");
+	var next = document.getElementById("next");
+	var curnode = {};
+	window.onload = function(){
+		if(tree){
+			curnode.nodename = tree;
+			curnode.flag = false;
+			curnode.parent = null;
+			findChildNodes(curnode);
+		}
+		prev.onclick = prevErgodic; //前序遍历
+		mid.onclick = midErgodic;   //中序遍历
+		next.onclick = nextErgodic; //后序遍历
+	}
+	
+	//遍历二叉树结构，保存为对象
+	function findChildNodes(cur){
+		if(!cur) return;
+		var child = cur.nodename.childNodes;
+		for(var i=0;i<child.length;i++){
+			//console.log(child[i]);
+			if(child[i].nodeType == 1){
+				var node1 = {nodename:child[i],flag:false,parent:cur};
+				if(cur.left){
+					cur.right = node1;
+				}else{
+					cur.left = node1;
+				}
+			}
+		}
+		findChildNodes(cur.left);
+		findChildNodes(cur.right);
+	}
+	function prevErgodic(){
+		//根节点--左子树--右子树
+		setPrevBackground(curnode);
+		//setTimeout(function(){setBackground()}, 1000);
+	}
+	function midErgodic(){
+		//左子树--根节点--右子树
+		setMidBackground(curnode);
+	}
+	function nextErgodic(){
+		//左子树--右子树--根节点
+		setNextBackground(curnode);
+	}
+	function setPrevBackground(element){
+		var nextele;
+		if(!element.flag){
+			reset();
+			element.nodename.style.backgroundColor = "blue";
+			element.flag = true;
+			nextele = element;
+			setTimeout(function(){
+				setPrevBackground(nextele);
+			},5000);
+		}else if((element.left)&&(!element.left.flag)){
+			reset();
+			element.left.nodename.style.backgroundColor = "blue";
+			element.left.flag = true;
+			nextele = element.left;
+			setTimeout(function(){
+				setPrevBackground(nextele);
+			},5000);
+		}else if((element.right)&&(!element.right.flag)){
+			reset();
+			element.right.nodename.style.backgroundColor = "blue";
+			element.right.flag = true;
+			nextele = element.right;
+			setTimeout(function(){
+				setPrevBackground(nextele);
+			},5000);
+		}else{
+			if(element.parent){
+				nextele = element.parent;
+				setPrevBackground(element.parent);
+			}else{
+				return;
+			}
+		}
+	}
+	function setMidBackground(element){
+		var nextele;
+		if(element == null) return;
+		if((element.left)&&(!element.left.flag)){
+			setMidBackground(element.left);
+		}else if(element.flag){
+			setMidBackground(element.parent);
+		}else if((!element.left)||(element.left.flag)){
+			reset();
+			element.nodename.style.backgroundColor = "blue";
+			element.flag = true;
+			nextele = element.right ? element.right : element.parent;
+			setTimeout(function(){
+				setMidBackground(nextele);
+			},5000);
+		}
+	}
+	function setNextBackground(element){
+		var nextele;
+		if(element == null) return;
+		if((element.left)&&(!element.left.flag)){
+			setNextBackground(element.left);
+		}else if((!element.left)||(element.right.flag)){
+			reset();
+			element.nodename.style.backgroundColor = "blue";
+			element.flag = true;
+			nextele = element.parent;
+			setTimeout(function(){
+				setNextBackground(nextele);
+			},5000);
+		}else if(!element.right.flag){
+			setNextBackground(element.right);
+		}
+	}
+	//将所有结构背景颜色设为初始颜色
+	function reset(){
+		var child = curnode.nodename.getElementsByTagName('div');
+		curnode.nodename.style.backgroundColor = "#ffffff";
+		for(var i=0;i<child.length;i++){
+			child[i].style.backgroundColor = "#ffffff";
+		}
+	}
+
+</script>
+</html>

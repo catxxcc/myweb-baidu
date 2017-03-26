@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		body{
+			margin: 0px;
+			padding: 0px;
+		}
+		div{
+			box-sizing: border-box;
+		}
+		.row{
+			height: 50px;
+			width: 550px;
+		}
+		.col{
+			width: 50px;
+			height: 50px;
+			float: left;
+			border: solid 1px #999999;
+		}
+		.tit{
+			border: none;
+			text-align: center;
+			line-height: 50px;
+		}
+		#quare{
+			width: 50px;
+			height: 50px;
+			background-color: red;
+			position: absolute;
+			left: 50px;
+			top: 50px;
+			-webkit-transition-property:all;
+			-webkit-transition-duration:2s;
+		}
+		.dir{
+			width: 50px;
+			height: 20px;
+			background-color: blue;
+
+		}
+		.rotateleft{
+			transform:rotate(-90deg);
+			-ms-transform:rotate(-90deg); 	/* IE 9 */
+			-moz-transform:rotate(-90deg); 	/* Firefox */
+			-webkit-transform:rotate(-90deg); /* Safari 和 Chrome */
+			-o-transform:rotate(-90deg); 	/* Opera */
+		}
+		.rotateright{
+			transform:rotate(90deg);
+			-ms-transform:rotate(90deg); 	/* IE 9 */
+			-moz-transform:rotate(90deg); 	/* Firefox */
+			-webkit-transform:rotate(90deg); /* Safari 和 Chrome */
+			-o-transform:rotate(90deg); 	/* Opera */
+		}
+		.rotate{
+			transform:rotate(180deg);
+			-ms-transform:rotate(180deg); 	/* IE 9 */
+			-moz-transform:rotate(180deg); 	/* Firefox */
+			-webkit-transform:rotate(180deg); /* Safari 和 Chrome */
+			-o-transform:rotate(180deg); 	/* Opera */
+		}
+	</style>
+</head>
+<body>
+<div class="wrap">
+	<div id="quare">
+		<div class="dir"></div>
+	</div>
+	<div class="grid">
+		<div class="row">
+			<div class="col tit"></div>
+			<div class="col tit">1</div>
+			<div class="col tit">2</div>
+			<div class="col tit">3</div>
+			<div class="col tit">4</div>
+			<div class="col tit">5</div>
+			<div class="col tit">6</div>
+			<div class="col tit">7</div>
+			<div class="col tit">8</div>
+			<div class="col tit">9</div>
+			<div class="col tit">10</div>
+		</div>
+		<div class="row">
+			<div class="col tit">1</div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+		</div>
+		<div class="row">
+			<div class="col tit">2</div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+		</div>
+		<div class="row">
+			<div class="col tit">3</div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+		</div>
+		<div class="row">
+			<div class="col tit">4</div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+		</div>
+		<div class="row">
+			<div class="col tit">5</div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+		</div>
+		<div class="row">
+			<div class="col tit">6</div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+		</div>
+		<div class="row">
+			<div class="col tit">7</div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+		</div>
+		<div class="row">
+			<div class="col tit">8</div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+		</div>
+		<div class="row">
+			<div class="col tit">9</div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+		</div>
+		<div class="row">
+			<div class="col tit">10</div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+		</div>
+	</div>
+</div>
+<div>
+	<input id="text" type="text">
+	<input id="button" type="button" value="执行">
+</div>
+<script type="text/javascript">
+	var con = document.getElementById("text");
+	var btn = document.getElementById("button");
+	var quare = document.getElementById("quare");
+	var direction = "top";
+	window.onload = function(){
+		btn.onclick = execute;
+	}
+	function execute(){
+		var content = con.value;
+		switch(content){
+			case "GO":
+				move();
+				break;
+			case "TUN LEF":
+				left();
+				break;
+			case "TUN RIG":
+				right();
+				break;
+			case "TUN BAC":
+				rotate();
+				break;
+			case "TRA LEF":
+				moveleft("left");
+				break;
+			case "TRA TOP":
+				moveleft("top");
+				break;
+			case "TRA RIG":
+				moveleft("right");
+				break;
+			case "TRA BOT":
+				moveleft("bottom");
+				break;
+			case "MOV LEF":
+				moveAndrotate("left");
+				break;
+			case "MOV TOP":
+				moveAndrotate("top");
+				break;
+			case "MOV RIG":
+				moveAndrotate("right");
+				break;
+			case "MOV BOT":
+				moveAndrotate("bottom");
+				break;
+		}
+	}
+	function move(){
+		var left = quare.offsetLeft;
+		var top = quare.offsetTop;
+		if(((direction == "top")&&(top == 50))||((direction=="left")&&(left==50))||((direction=="right")&&(left==500))||((direction=="bottom")&&(top==500))){
+			alert("已到头，请换方向");
+		}else{
+			switch(direction){
+				case "top":
+					quare.style.top = (top - 50) + "px";
+					break;
+				case "left":
+					quare.style.left = (left - 50) + "px";
+					break;
+				case "right":
+					quare.style.left = (left + 50) + "px";
+					break;
+				case "bottom":
+					quare.style.top = (top + 50) + "px";
+					break;
+			}
+		}
+	}
+	function left(){
+		//quare.className = "rotateleft";
+		switch(direction){
+			case "top":
+				quare.style.webkitTransform = "rotate(-90deg)";
+				direction = "left";
+				break;
+			case "left":
+				quare.style.webkitTransform = "rotate(-180deg)";
+				direction = "bottom";
+				break;
+			case "right":
+				quare.style.webkitTransform = "rotate(-360deg)";
+				direction = "top";
+				break;
+			case "bottom":
+				quare.style.webkitTransform = "rotate(-270deg)";
+				direction = "right";
+				break;
+		}
+	}
+	function right(){
+		//quare.setAttribute('class',"rotateright");
+		//quare.style.webkitTransform = "rotate(90deg)";
+		switch(direction){
+			case "top":
+				quare.style.webkitTransform = "rotate(90deg)";
+				direction = "right";
+				break;
+			case "left":
+				quare.style.webkitTransform = "rotate(360deg)";
+				direction = "top";
+				break;
+			case "right":
+				quare.style.webkitTransform = "rotate(180deg)";
+				direction = "bottom";
+				break;
+			case "bottom":
+				quare.style.webkitTransform = "rotate(270deg)";
+				direction = "left";
+				break;
+		}
+	}
+	function rotate(){
+		//quare.className = "rotate";
+		switch(direction){
+			case "top":
+				quare.style.webkitTransform = "rotate(180deg)";
+				direction = "bottom";
+				break;
+			case "left":
+				quare.style.webkitTransform = "rotate(-180deg)";
+				direction = "right";
+				break;
+			case "right":
+				quare.style.webkitTransform = "rotate(270deg)";
+				direction = "left";
+				break;
+			case "bottom":
+				quare.style.webkitTransform = "rotate(360deg)";
+				direction = "top";
+				break;
+		}
+	}
+	function moveleft(dr){
+		var left = quare.offsetLeft;
+		var top = quare.offsetTop;
+		if(((dr == "top")&&(top == 50))||((dr=="left")&&(left==50))||((dr=="right")&&(left==500))||((dr=="bottom")&&(top==500))){
+			alert("已到头，请换方向");
+		}else{
+			switch(dr){
+				case "top":
+					quare.style.top = (top - 50) + "px";
+					break;
+				case "left":
+					quare.style.left = (left - 50) + "px";
+					break;
+				case "right":
+					quare.style.left = (left + 50) + "px";
+					break;
+				case "bottom":
+					quare.style.top = (top + 50) + "px";
+					break;
+			}
+		}
+	}
+
+	function moveAndrotate(dr){
+		switch(dr){
+			case "top":
+				quare.style.webkitTransform = "rotate(360deg)";
+				break;
+			case "left":
+				quare.style.webkitTransform = "rotate(27deg)";
+				break;
+			case "bottom":
+				quare.style.webkitTransform = "rotate(180deg)";
+				break;
+			case "right":
+				quare.style.webkitTransform = "rotate(90deg)";
+				break;
+		}
+		direction = dr;
+		move();
+
+	}
+</script>
+</body>
+</html>
